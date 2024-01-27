@@ -8,11 +8,14 @@ public partial class Farmer : CharacterBody2D
 
 	public Vector2 ScreenSize; // Size of the game window.
 
-	public void Start(Vector2 position)
+	public GpuParticles2D WaterParticles;
+	public void _Start(Vector2 position)
 	{
 		Position = position;
 		Show();
 		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+
+		//WaterParticles = GetNode<GpuParticles2D>("WaterParticles");
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -80,5 +83,23 @@ public partial class Farmer : CharacterBody2D
 			//animatedSprite2D.Animation = "up";
 			//animatedSprite2D.FlipV = velocity.Y > 0;
 		}
+
+		bool shootingWater = Input.IsActionPressed("shoot_water");
+		if(shootingWater) 
+		{
+			//Ver 1 - using particles
+			//WaterParticles.Emitting = shootingWater;
+
+			//Ver 2 - Instantiate each drop
+			PackedScene waterDropScene = GD.Load<PackedScene>("res://Scenes/WaterDrop.tscn");
+
+			WaterDrop waterDrop = waterDropScene.Instantiate<WaterDrop>();
+
+			waterDrop.ShootWaterDrop(Position, WaterDrop.Directions.Down);
+
+			Window root = GetTree().Root;
+			root.AddChild(waterDrop);
+		}
+
 	}
 }

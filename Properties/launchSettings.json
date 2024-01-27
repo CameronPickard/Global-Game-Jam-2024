@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Global Game Jam 2024": {
+      "commandName": "Project",
+      "commandLineArgs": "D:\\Programs HDD\\Godot_v4.2.1-stable_mono_win64\\Godot_v4.2.1-stable_mono_win64\\Godot_v4.2.1-stable_mono_win64.exe",
+      "workingDirectory": "--path . --verbose"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "D:\\Programs HDD\\Godot_v4.2.1-stable_mono_win64\\Godot_v4.2.1-stable_mono_win64\\Godot_v4.2.1-stable_mono_win64.exe",
+      "commandLineArgs": "--path . --verbose",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}
