@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu1cq311k8a8o"]
+
+[ext_resource type="Script" path="res://Farmer.cs" id="1_n2k3n"]
+[ext_resource type="Texture2D" uid="uid://cmn0vryudjc6s" path="res://placeholder_junk/morlan_overworld_front.png" id="2_g42ht"]
+[ext_resource type="Texture2D" uid="uid://cnvf4e60chj7s" path="res://placeholder_junk/plant.png" id="3_c8m3h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bs5r5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g42ht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6do7"]
+size = Vector2(18, 24)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p5c4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqm4"]
+size = Vector2(3.59242, 3.4626)
+
+[node name="Node" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.576471, 0, 1)
+
+[node name="Farmer" type="CharacterBody2D" parent="."]
+position = Vector2(204, 101)
+collision_mask = 2
+script = ExtResource("1_n2k3n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Farmer"]
+sprite_frames = SubResource("SpriteFrames_bs5r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
+shape = SubResource("RectangleShape2D_g6do7")
+
+[node name="Plant1" type="StaticBody2D" parent="."]
+position = Vector2(286, 166)
+scale = Vector2(6.9591, 10.108)
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_p5c4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plant1"]
+position = Vector2(-0.0718422, 0.049469)
+shape = SubResource("RectangleShape2D_6iqm4")
+debug_color = Color(0.713726, 0.333333, 0.878431, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plant1"]
+scale = Vector2(0.15, 0.103)
+texture = ExtResource("3_c8m3h")
