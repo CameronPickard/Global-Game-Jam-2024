@@ -36,7 +36,7 @@ public partial class Bunny : Area2D
 			normalAwayFromPlant = new Vector2(normalAwayFromPlant.X * (float)delta * _bunnyRunawaySpeed, normalAwayFromPlant.Y * (float)delta * _bunnyRunawaySpeed);
 			Position = new Vector2(Position.X + normalAwayFromPlant.X, Position.Y + normalAwayFromPlant.Y);
 		}
-        else if(currentState == BunnyState.Eating) 
+		else if(currentState == BunnyState.Eating) 
 		{
 			GameManager.Instance.OnEnemyEating();
 			if(plantBeingEaten != null)
