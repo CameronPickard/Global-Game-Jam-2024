@@ -1,12 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://blgtv5jmce8yo"]
 
-[ext_resource type="Script" path="res://WaterDrop.cs" id="1_rtusm"]
+[ext_resource type="Script" path="res://Scripts/WaterDrop.cs" id="1_rtusm"]
 [ext_resource type="Texture2D" uid="uid://dd6s5yhd3bly1" path="res://placeholder_junk/waterDrop.png" id="2_gr0yn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybltu"]
 radius = 3.16228
 
 [node name="WaterDrop" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_rtusm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

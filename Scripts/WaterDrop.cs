@@ -1,12 +1,13 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 
 public partial class WaterDrop : Area2D
 {
 	public bool hasBeenShot = false;
 
-	public double angleOfDirection = 180f;
+	public double angleOfDirection = 0f;
 	public double mathAngle
 	{
 
@@ -27,16 +28,27 @@ public partial class WaterDrop : Area2D
 		}
 	}
 
-	public void ShootWaterDrop(Vector2 startPosition, Directions direction) 
+	public void ShootWaterDrop(Vector2 startPosition, HelperMethods.Directions direction) 
 	{
 		//hasBeenShot = true;
 		hasBeenShot = true;
 		Position = new Vector2(startPosition.X, startPosition.Y + 5);
-		//Create the water drop timer
-		//Timer timer = GetNode<Timer>("WaterDropTimer");
-		//timer.Connect("timeout", new Callable(this, nameof(this.OnWaterDropTimeout)));
-		//timer.Start();
-		angleOfDirection = GetRandomNumber(180 - 20, 180 + 20);
+		
+		switch(direction) {
+			case HelperMethods.Directions.Up:
+				angleOfDirection = 270f;
+				break;
+			case HelperMethods.Directions.Down:
+				angleOfDirection = 90f;
+				break;
+			case HelperMethods.Directions.Right:
+				angleOfDirection = 0f;
+				break;
+			case HelperMethods.Directions.Left:
+				angleOfDirection = 180f;
+				break;
+		}
+		angleOfDirection = GetRandomNumber(angleOfDirection - 30, angleOfDirection + 30);
 		Timer timer = GetNode<Timer>("WaterDropTimer");
 		timer.WaitTime = GetRandomNumber(timer.WaitTime - .05, timer.WaitTime + .05);
 		Position = new Vector2(startPosition.X + (float)Math.Cos(mathAngle), startPosition.Y + (float)Math.Sin(mathAngle));
@@ -53,14 +65,6 @@ public partial class WaterDrop : Area2D
 	{
 		Debug.Print("Timer out yay");
 		QueueFree();
-	}
-
-	public enum Directions {
-		Left,
-		Right,
-		Up,
-		Down
-
 	}
 
 }

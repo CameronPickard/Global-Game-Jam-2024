@@ -8,7 +8,8 @@ public partial class Farmer : CharacterBody2D
 
 	public Vector2 ScreenSize; // Size of the game window.
 
-	public GpuParticles2D WaterParticles;
+	public HelperMethods.Directions currentDirection = HelperMethods.Directions.Down;
+
 	public void _Start(Vector2 position)
 	{
 		Position = position;
@@ -33,21 +34,25 @@ public partial class Farmer : CharacterBody2D
 		if (Input.IsActionPressed("move_right"))
 		{
 			velocity.X += 1;
+			currentDirection = HelperMethods.Directions.Right;
 		}
 
 		if (Input.IsActionPressed("move_left"))
 		{
 			velocity.X -= 1;
+			currentDirection = HelperMethods.Directions.Left;
 		}
 
 		if (Input.IsActionPressed("move_down"))
 		{
 			velocity.Y += 1;
+			currentDirection = HelperMethods.Directions.Down;
 		}
 
 		if (Input.IsActionPressed("move_up"))
 		{
 			velocity.Y -= 1;
+			currentDirection = HelperMethods.Directions.Up;
 		}
 
 		//var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -95,7 +100,7 @@ public partial class Farmer : CharacterBody2D
 
 			WaterDrop waterDrop = waterDropScene.Instantiate<WaterDrop>();
 
-			waterDrop.ShootWaterDrop(Position, WaterDrop.Directions.Down);
+			waterDrop.ShootWaterDrop(Position, currentDirection);
 
 			Window root = GetTree().Root;
 			root.AddChild(waterDrop);
