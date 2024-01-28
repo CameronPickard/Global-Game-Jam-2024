@@ -54,8 +54,8 @@ public partial class Farmer : CharacterBody2D
 			velocity.Y -= 1;
 			currentDirection = HelperMethods.Directions.Up;
 		}
-
-		//var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		
+		//var animatedSprite2D = GetNode<Sprite2D>("AnimatedSprite2D");
 
 		if (velocity.Length() > 0)
 		{
