@@ -52,7 +52,6 @@ script = ExtResource("3_rwukh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlantWaterIntake"]
 position = Vector2(-0.035923, -0.0989285)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_lmap5")
 
 [node name="SparkleTimer" type="Timer" parent="."]
