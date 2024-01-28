@@ -172,6 +172,7 @@ position = Vector2(147, 49)
 
 [node name="Trees" type="Node2D" parent="."]
 position = Vector2(5, 170)
+metadata/_edit_lock_ = true
 
 [node name="LeftTrees" type="Node2D" parent="Trees"]
 
