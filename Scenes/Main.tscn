@@ -1,29 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu1cq311k8a8o"]
+[gd_scene load_steps=6 format=3 uid="uid://cu1cq311k8a8o"]
 
-[ext_resource type="Script" path="res://Farmer.cs" id="1_n2k3n"]
-[ext_resource type="Texture2D" uid="uid://cmn0vryudjc6s" path="res://placeholder_junk/morlan_overworld_front.png" id="2_g42ht"]
-[ext_resource type="Texture2D" uid="uid://cnvf4e60chj7s" path="res://placeholder_junk/plant.png" id="3_c8m3h"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bs5r5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_g42ht")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://Scripts/Farmer.cs" id="1_n2k3n"]
+[ext_resource type="Texture2D" uid="uid://deifrx2tw612l" path="res://Sprites/farmer.png" id="2_ho7xd"]
+[ext_resource type="PackedScene" uid="uid://drledn0uv4lsm" path="res://Scenes/Plant.tscn" id="3_w5kyf"]
+[ext_resource type="Script" path="res://Scenes/GameManager.cs" id="4_38j3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6do7"]
-size = Vector2(18, 24)
+size = Vector2(17, 34)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p5c4y"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqm4"]
-size = Vector2(3.59242, 3.4626)
-
-[node name="Node" type="Node"]
+[node name="Main" type="Node"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -38,24 +23,50 @@ position = Vector2(204, 101)
 collision_mask = 2
 script = ExtResource("1_n2k3n")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Farmer"]
-sprite_frames = SubResource("SpriteFrames_bs5r5")
+[node name="AnimatedSprite2D" type="Sprite2D" parent="Farmer"]
+texture = ExtResource("2_ho7xd")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Farmer"]
+position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_g6do7")
 
-[node name="Plant1" type="StaticBody2D" parent="."]
-position = Vector2(286, 166)
-scale = Vector2(6.9591, 10.108)
-collision_layer = 2
-collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_p5c4y")
+[node name="Plant1" parent="." instance=ExtResource("3_w5kyf")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plant1"]
-position = Vector2(-0.0718422, 0.049469)
-shape = SubResource("RectangleShape2D_6iqm4")
-debug_color = Color(0.713726, 0.333333, 0.878431, 0.419608)
+[node name="Plant2" parent="." instance=ExtResource("3_w5kyf")]
+position = Vector2(312, 166)
 
-[node name="Sprite2D" type="Sprite2D" parent="Plant1"]
-scale = Vector2(0.15, 0.103)
-texture = ExtResource("3_c8m3h")
+[node name="Plant3" parent="." instance=ExtResource("3_w5kyf")]
+position = Vector2(311, 201)
+
+[node name="Plant4" parent="." instance=ExtResource("3_w5kyf")]
+position = Vector2(337, 167)
+
+[node name="Plant5" parent="." instance=ExtResource("3_w5kyf")]
+position = Vector2(363, 167)
+
+[node name="Plant6" parent="." instance=ExtResource("3_w5kyf")]
+position = Vector2(337, 132)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 3.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GardenGrowthBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 9.0
+offset_right = 426.0
+offset_bottom = 36.0
+show_percentage = false
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("4_38j3c")

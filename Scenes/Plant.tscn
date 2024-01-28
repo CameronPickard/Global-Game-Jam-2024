@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://drledn0uv4lsm"]
+
+[ext_resource type="Script" path="res://Scripts/Plant.cs" id="1_kej2k"]
+[ext_resource type="Texture2D" uid="uid://cnvf4e60chj7s" path="res://placeholder_junk/plant.png" id="1_r7q6b"]
+[ext_resource type="Script" path="res://Scenes/PlantWaterIntake.cs" id="3_rwukh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p5c4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqm4"]
+size = Vector2(3.59242, 3.4626)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmap5"]
+size = Vector2(2.0836, 1.97863)
+
+[node name="Plant" type="StaticBody2D"]
+position = Vector2(286, 166)
+scale = Vector2(6.9591, 10.108)
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_p5c4y")
+script = ExtResource("1_kej2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0718422, 0.049469)
+shape = SubResource("RectangleShape2D_6iqm4")
+debug_color = Color(0.713726, 0.333333, 0.878431, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.103)
+texture = ExtResource("1_r7q6b")
+
+[node name="PlantWaterIntake" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("3_rwukh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlantWaterIntake"]
+position = Vector2(-0.035923, -0.0989285)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_lmap5")

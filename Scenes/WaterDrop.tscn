@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://blgtv5jmce8yo"]
+
+[ext_resource type="Script" path="res://Scripts/WaterDrop.cs" id="1_rtusm"]
+[ext_resource type="Texture2D" uid="uid://dd6s5yhd3bly1" path="res://placeholder_junk/waterDrop.png" id="2_gr0yn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybltu"]
+radius = 3.16228
+
+[node name="WaterDrop" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_rtusm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.5, 0.571429)
+texture = ExtResource("2_gr0yn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ybltu")
+
+[node name="WaterDropTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="WaterDropTimer" to="." method="OnWaterDropTimerTimeout"]
