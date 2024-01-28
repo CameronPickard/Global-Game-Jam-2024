@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cu1cq311k8a8o"]
+[gd_scene load_steps=24 format=3 uid="uid://cu1cq311k8a8o"]
 
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_h8unj"]
 [ext_resource type="Script" path="res://Scripts/Farmer.cs" id="1_n2k3n"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://q3yjo26r7g6c" path="res://Sprites/progressbarfull.png" id="11_bxq8f"]
 [ext_resource type="Texture2D" uid="uid://cuvgrafno0peq" path="res://Sprites/progresslosebarbase.png" id="12_piire"]
 [ext_resource type="Texture2D" uid="uid://nmebsbjc7h1w" path="res://Sprites/progresslosebar.png" id="13_067qi"]
+[ext_resource type="AudioStream" uid="uid://dfoh4yyu3b8yw" path="res://Font/Heavy Riff 4 (looped).wav" id="14_e8asy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_871u7"]
 texture = ExtResource("3_anjxe")
@@ -518,5 +519,8 @@ texture_progress = ExtResource("13_067qi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_e8asy")
 
 [connection signal="timeout" from="BunnySpawnTimer" to="." method="OnBunnySpawnTimerTimeout"]

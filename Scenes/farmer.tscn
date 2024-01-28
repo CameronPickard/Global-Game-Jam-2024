@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://8u1k56ggjgjo"]
+[gd_scene load_steps=34 format=3 uid="uid://8u1k56ggjgjo"]
 
 [ext_resource type="Script" path="res://Scripts/Farmer.cs" id="1_lblr2"]
 [ext_resource type="Texture2D" uid="uid://deifrx2tw612l" path="res://Sprites/farmer.png" id="2_ok88y"]
+[ext_resource type="Texture2D" uid="uid://c3njc4l8axyx2" path="res://Sprites/wateringcan.png" id="3_s3txh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6do7"]
 size = Vector2(17, 34)
@@ -19,6 +20,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spout/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cvq5a"]
@@ -68,6 +81,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [13, 14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spout/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(-1, 1), Vector2(-1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_t06d2"]
@@ -302,6 +327,13 @@ shape = SubResource("RectangleShape2D_g6do7")
 [node name="Spout" type="Marker2D" parent="."]
 position = Vector2(12, 7)
 
+[node name="Sprite2D" type="Sprite2D" parent="Spout"]
+z_index = -1
+position = Vector2(-1, 1)
+texture = ExtResource("3_s3txh")
+hframes = 6
+frame = 2
+
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hemfd")
@@ -314,7 +346,6 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_yf3gq")
 anim_player = NodePath("../Animations")
-parameters/conditions/!moving = false
 parameters/standing_atk/blend_position = Vector2(0.38051, 0.017647)
 parameters/walk/blend_position = Vector2(-0.00232017, 0.028777)
 parameters/walking_atk/blend_position = Vector2(-0.0046404, 0.017647)
