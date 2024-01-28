@@ -16,3 +16,11 @@ mono_crash.*.json
 
 #.vs files
 .vs/
+
+
+# dont commit png import files
+*.png.import
+
+# dont commit whatever these are
+*dtbcache
+*.suo

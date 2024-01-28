@@ -67,4 +67,11 @@ public partial class WaterDrop : Area2D
 		QueueFree();
 	}
 
+	private void OnWaterDropAreaEntered(Area2D area)
+	{
+		if (area.IsInGroup("PlantWaterIntake"))
+		{
+			QueueFree();
+		}
+	}
 }
