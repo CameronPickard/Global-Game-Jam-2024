@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://8u1k56ggjgjo"]
+[gd_scene load_steps=33 format=3 uid="uid://1khps5tl11bb"]
 
 [ext_resource type="Script" path="res://Scripts/Farmer.cs" id="1_lblr2"]
 [ext_resource type="Texture2D" uid="uid://deifrx2tw612l" path="res://Sprites/farmer.png" id="2_ok88y"]
@@ -314,7 +314,6 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_yf3gq")
 anim_player = NodePath("../Animations")
-parameters/conditions/!moving = false
 parameters/standing_atk/blend_position = Vector2(0.38051, 0.017647)
 parameters/walk/blend_position = Vector2(-0.00232017, 0.028777)
 parameters/walking_atk/blend_position = Vector2(-0.0046404, 0.017647)

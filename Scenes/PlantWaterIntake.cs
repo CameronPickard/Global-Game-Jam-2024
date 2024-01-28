@@ -6,10 +6,11 @@ public partial class PlantWaterIntake : Area2D
 {
 	public double currentWaterCount = 0;
 	public double sparkleWaterCount = 100;
-	public double drowningWaterCount = 200;
+	public double drowningWaterCount = 10000; //scrapped feature - just set it super high so it's not a problem
 
 	public Timer sparkleTimer = null;
 	public GpuParticles2D sparkleParticles = null;
+	public AnimationPlayer plantAnimationPlayer;
 	public bool IsSparkling
 	{
 		get { return (currentWaterCount > sparkleWaterCount && currentWaterCount < drowningWaterCount); }
@@ -20,6 +21,7 @@ public partial class PlantWaterIntake : Area2D
 	{
 		sparkleTimer = GetNode<Timer>("../SparkleTimer");
 		sparkleParticles = GetNode<GpuParticles2D>("../SparkleParticles");
+		plantAnimationPlayer = GetNode<AnimationPlayer>("../Animations");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +30,10 @@ public partial class PlantWaterIntake : Area2D
 		if(IsSparkling) {
 			GameManager.Instance.OnPlantSparkling();
 			sparkleParticles.Emitting = true;
+			plantAnimationPlayer.Play("idle_watered");
+		}
+		else {
+			plantAnimationPlayer.Play("idle_unwatered");
 		}
 	}
 
@@ -37,7 +43,7 @@ public partial class PlantWaterIntake : Area2D
 			Debug.Print("Watered amount: " + this.currentWaterCount);
 
 			bool wasSparkling = false;
-			currentWaterCount += 2;
+			currentWaterCount += 1.5;
 			if(!wasSparkling && IsSparkling) {
 				sparkleTimer.Start();
 			}

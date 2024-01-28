@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://Scripts/Main.cs" id="1_h8unj"]
 [ext_resource type="Script" path="res://Scripts/Farmer.cs" id="1_n2k3n"]
 [ext_resource type="Texture2D" uid="uid://deifrx2tw612l" path="res://Sprites/farmer.png" id="2_ho7xd"]
-[ext_resource type="Texture2D" uid="uid://bhfbsn4xkhifo" path="res://Sprites/tilemap.png" id="3_anjxe"]
-[ext_resource type="PackedScene" uid="uid://drledn0uv4lsm" path="res://Scenes/Plant.tscn" id="3_w5kyf"]
+[ext_resource type="Texture2D" uid="uid://ddooeu5ra0f14" path="res://Sprites/tilemap.png" id="3_anjxe"]
+[ext_resource type="PackedScene" uid="uid://mxh2t358abtr" path="res://Scenes/Plant.tscn" id="3_w5kyf"]
 [ext_resource type="Script" path="res://Scenes/UI.cs" id="4_xgolr"]
-[ext_resource type="PackedScene" uid="uid://do7ldsxsa6c21" path="res://Scenes/Bunny.tscn" id="5_sx7g7"]
-[ext_resource type="Texture2D" uid="uid://dyckk33e8ss40" path="res://Sprites/tree.png" id="6_ernea"]
-[ext_resource type="PackedScene" uid="uid://8u1k56ggjgjo" path="res://Scenes/farmer.tscn" id="7_lu7kd"]
-[ext_resource type="Texture2D" uid="uid://bju7t2ev8tc2f" path="res://Sprites/progressbarbase.png" id="10_uar65"]
-[ext_resource type="Texture2D" uid="uid://q3yjo26r7g6c" path="res://Sprites/progressbarfull.png" id="11_bxq8f"]
-[ext_resource type="Texture2D" uid="uid://cuvgrafno0peq" path="res://Sprites/progresslosebarbase.png" id="12_piire"]
-[ext_resource type="Texture2D" uid="uid://nmebsbjc7h1w" path="res://Sprites/progresslosebar.png" id="13_067qi"]
+[ext_resource type="PackedScene" uid="uid://byufkhrr1each" path="res://Scenes/Bunny.tscn" id="5_sx7g7"]
+[ext_resource type="Texture2D" uid="uid://c7akwh7cgm8uw" path="res://Sprites/tree.png" id="6_ernea"]
+[ext_resource type="PackedScene" uid="uid://1khps5tl11bb" path="res://Scenes/farmer.tscn" id="7_lu7kd"]
+[ext_resource type="Texture2D" uid="uid://c63gkc1e1egg7" path="res://Sprites/progressbarbase.png" id="10_uar65"]
+[ext_resource type="Texture2D" uid="uid://lqyp53p5i7s8" path="res://Sprites/progressbarfull.png" id="11_bxq8f"]
+[ext_resource type="Texture2D" uid="uid://ddohft1b36vm1" path="res://Sprites/progresslosebarbase.png" id="12_piire"]
+[ext_resource type="Texture2D" uid="uid://c1my0l26d6aph" path="res://Sprites/progresslosebar.png" id="13_067qi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_871u7"]
 texture = ExtResource("3_anjxe")
@@ -49,16 +49,16 @@ tile_size = Vector2i(24, 24)
 sources/0 = SubResource("TileSetAtlasSource_871u7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xes4v"]
-size = Vector2(11, 382)
+size = Vector2(53, 382)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tdjv"]
-size = Vector2(21, 370.5)
+size = Vector2(61, 370.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnugn"]
-size = Vector2(668, 23)
+size = Vector2(668, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwai3"]
-size = Vector2(662, 33)
+size = Vector2(662, 35.5)
 
 [sub_resource type="Curve2D" id="Curve2D_irmqu"]
 _data = {
@@ -85,16 +85,6 @@ corner_radius_bottom_left = 12
 [node name="Main" type="Node"]
 script = ExtResource("1_h8unj")
 BunnyScene = ExtResource("5_sx7g7")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-show_behind_parent = true
-z_index = -10
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0627451, 0.576471, 0, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_2vq4d")
@@ -130,28 +120,28 @@ position = Vector2(276, 150)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier/LeftWall"]
-position = Vector2(-4.5, 181)
+position = Vector2(16.5, 181)
 shape = SubResource("RectangleShape2D_xes4v")
 
 [node name="RightWall" type="StaticBody2D" parent="Barrier"]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier/RightWall"]
-position = Vector2(646.5, 183.75)
+position = Vector2(626.5, 183.75)
 shape = SubResource("RectangleShape2D_0tdjv")
 
 [node name="TopWall" type="StaticBody2D" parent="Barrier"]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier/TopWall"]
-position = Vector2(324, -10.5)
+position = Vector2(324, 10)
 shape = SubResource("RectangleShape2D_pnugn")
 
 [node name="BottomWall" type="StaticBody2D" parent="Barrier"]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier/BottomWall"]
-position = Vector2(328, 340)
+position = Vector2(328, 338.75)
 shape = SubResource("RectangleShape2D_vwai3")
 
 [node name="Bunny" parent="." instance=ExtResource("5_sx7g7")]
@@ -165,7 +155,7 @@ curve = SubResource("Curve2D_irmqu")
 position = Vector2(0, 1)
 
 [node name="BunnySpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.5
 
 [node name="Farmer2" parent="." instance=ExtResource("7_lu7kd")]
 position = Vector2(147, 49)
@@ -456,6 +446,16 @@ hframes = 2
 position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_g6do7")
 
+[node name="GameEndRect" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.329412)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="CanvasLayer"]
@@ -502,7 +502,6 @@ grow_vertical = 0
 
 [node name="GardenGrowthBar" type="TextureProgressBar" parent="CanvasLayer/UI/HBoxContainer"]
 layout_mode = 2
-step = 10.0
 rounded = true
 texture_under = ExtResource("10_uar65")
 texture_progress = ExtResource("11_bxq8f")
@@ -515,6 +514,51 @@ layout_mode = 2
 layout_mode = 2
 texture_under = ExtResource("12_piire")
 texture_progress = ExtResource("13_067qi")
+
+[node name="VictoryLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -309.0
+offset_right = 221.0
+offset_bottom = -286.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "A healthy garden and peace at last!"
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -309.0
+offset_right = 281.0
+offset_bottom = -286.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Gardening is too hard..."
+
+[node name="StartLabel" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -309.0
+offset_right = 18.0
+offset_bottom = -286.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Water the Corncumbers! Keep the Cabbits Away!"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

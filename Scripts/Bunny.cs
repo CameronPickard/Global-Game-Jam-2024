@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 public partial class Bunny : Area2D
 {
-	private static float _bunnySpeed = 10.0f;
+	private static float _bunnySpeed = 14.0f;
 	private static float _bunnyRunawaySpeed = 100.0f;
 
 	public BunnyState currentState;
