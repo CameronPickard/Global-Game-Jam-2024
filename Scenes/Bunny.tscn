@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://do7ldsxsa6c21"]
+
+[ext_resource type="Script" path="res://Scripts/Bunny.cs" id="1_fivsq"]
+[ext_resource type="Texture2D" uid="uid://bywhsl1j7en8r" path="res://placeholder_junk/bunny.png" id="2_xocb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljl8l"]
+size = Vector2(15, 23.4472)
+
+[node name="Bunny" type="Area2D" groups=["Bunnies"]]
+position = Vector2(486, 235)
+collision_layer = 32
+collision_mask = 12
+script = ExtResource("1_fivsq")
+
+[node name="BunnySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_xocb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4.0639)
+scale = Vector2(1, 0.94373)
+shape = SubResource("RectangleShape2D_ljl8l")
+
+[connection signal="area_entered" from="." to="." method="OnBunnyAreaEntered"]
